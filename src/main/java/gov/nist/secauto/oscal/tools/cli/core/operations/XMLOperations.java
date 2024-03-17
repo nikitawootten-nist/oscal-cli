@@ -76,8 +76,10 @@ public final class XMLOperations {
       }
     }
 
-    // TransformerHandler resolverHandler = transfomerFactory.newTransformerHandler(resolver);
-    // TransformerHandler rendererHandler = transfomerFactory.newTransformerHandler(renderer);
+    // TransformerHandler resolverHandler =
+    // transfomerFactory.newTransformerHandler(resolver);
+    // TransformerHandler rendererHandler =
+    // transfomerFactory.newTransformerHandler(renderer);
     //
     // resolverHandler.setResult(new SAXResult(rendererHandler));
     // rendererHandler.setResult(new StreamResult(result));

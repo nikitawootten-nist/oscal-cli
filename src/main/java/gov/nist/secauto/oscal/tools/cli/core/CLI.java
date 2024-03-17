@@ -42,6 +42,8 @@ import gov.nist.secauto.oscal.tools.cli.core.commands.metaschema.MetaschemaComma
 import gov.nist.secauto.oscal.tools.cli.core.commands.poam.PlanOfActionsAndMilestonesCommand;
 import gov.nist.secauto.oscal.tools.cli.core.commands.profile.ProfileCommand;
 import gov.nist.secauto.oscal.tools.cli.core.commands.ssp.SystemSecurityPlanCommand;
+import gov.nist.secauto.oscal.tools.cli.core.commands.mapping.MappingCommand;
+import gov.nist.secauto.oscal.tools.cli.core.commands.srm.SharedResponsibilityCommand;
 
 import java.util.List;
 
@@ -74,6 +76,8 @@ public final class CLI {
     processor.addCommandHandler(new AssessmentPlanCommand());
     processor.addCommandHandler(new AssessmentResultsCommand());
     processor.addCommandHandler(new PlanOfActionsAndMilestonesCommand());
+    processor.addCommandHandler(new MappingCommand());
+    processor.addCommandHandler(new SharedResponsibilityCommand());
     processor.addCommandHandler(new MetaschemaCommand());
     return processor.process(args);
   }

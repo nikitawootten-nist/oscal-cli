@@ -24,7 +24,7 @@
  * OF THE RESULTS OF, OR USE OF, THE SOFTWARE OR SERVICES PROVIDED HEREUNDER.
  */
 
-package gov.nist.secauto.oscal.tools.cli.core.commands.componentdefinition;
+package gov.nist.secauto.oscal.tools.cli.core.commands.mapping;
 
 import gov.nist.secauto.metaschema.binding.io.xml.XmlUtil;
 import gov.nist.secauto.metaschema.model.common.util.CollectionUtil;
@@ -45,7 +45,7 @@ public class ValidateSubcommand
     extends AbstractOscalValidationSubcommand {
   @Override
   public String getDescription() {
-    return "Check that the specified OSCAL instance is well-formed and valid to the Component Definition model.";
+    return "Check that the specified OSCAL instance is well-formed and valid to the Mapping model.";
   }
 
   @Override
@@ -54,7 +54,7 @@ public class ValidateSubcommand
     retval.add(
         ObjectUtils.requireNonNull(
             XmlUtil.getStreamSource(
-                OscalBindingContext.class.getResource("/schema/xml/oscal-component-definition_schema.xsd"))));
+                OscalBindingContext.class.getResource("/schema/xml/oscal-mapping_schema.xsd"))));
     return CollectionUtil.unmodifiableList(retval);
   }
 
@@ -62,6 +62,6 @@ public class ValidateSubcommand
   protected JSONObject getOscalJsonSchema() {
     return JsonSchemaContentValidator.toJsonObject(
         ObjectUtils.requireNonNull(
-            OscalBindingContext.class.getResourceAsStream("/schema/json/oscal-component-definition_schema.json")));
+            OscalBindingContext.class.getResourceAsStream("/schema/json/oscal-mapping_schema.json")));
   }
 }

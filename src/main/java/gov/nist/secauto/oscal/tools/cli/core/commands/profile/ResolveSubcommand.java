@@ -292,7 +292,8 @@ public class ResolveSubcommand
             .withThrowable(ex);
       }
 
-      // DefaultConstraintValidator validator = new DefaultConstraintValidator(dynamicContext);
+      // DefaultConstraintValidator validator = new
+      // DefaultConstraintValidator(dynamicContext);
       // ((IBoundXdmNodeItem)resolvedProfile).validate(validator);
       // validator.finalizeValidation();
 

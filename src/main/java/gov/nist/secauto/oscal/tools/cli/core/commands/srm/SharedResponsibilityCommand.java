@@ -24,44 +24,28 @@
  * OF THE RESULTS OF, OR USE OF, THE SOFTWARE OR SERVICES PROVIDED HEREUNDER.
  */
 
-package gov.nist.secauto.oscal.tools.cli.core.commands.componentdefinition;
+package gov.nist.secauto.oscal.tools.cli.core.commands.srm;
 
-import gov.nist.secauto.metaschema.binding.io.xml.XmlUtil;
-import gov.nist.secauto.metaschema.model.common.util.CollectionUtil;
-import gov.nist.secauto.metaschema.model.common.util.ObjectUtils;
-import gov.nist.secauto.metaschema.model.common.validation.JsonSchemaContentValidator;
-import gov.nist.secauto.oscal.lib.OscalBindingContext;
-import gov.nist.secauto.oscal.tools.cli.core.commands.oscal.AbstractOscalValidationSubcommand;
+import gov.nist.secauto.metaschema.cli.processor.command.AbstractParentCommand;
 
-import org.json.JSONObject;
+public class SharedResponsibilityCommand
+    extends AbstractParentCommand {
+  private static final String COMMAND = "shared-responsibility";
 
-import java.io.IOException;
-import java.util.LinkedList;
-import java.util.List;
+  public SharedResponsibilityCommand() {
+    super(true);
+    addCommandHandler(new ValidateSubcommand());
+    addCommandHandler(new ConvertSubcommand());
+  }
 
-import javax.xml.transform.Source;
+  @Override
+  public String getName() {
+    return COMMAND;
+  }
 
-public class ValidateSubcommand
-    extends AbstractOscalValidationSubcommand {
   @Override
   public String getDescription() {
-    return "Check that the specified OSCAL instance is well-formed and valid to the Component Definition model.";
+    return "Perform an operation on an OSCAL Shared Responsibility Document";
   }
 
-  @Override
-  protected List<Source> getOscalXmlSchemas() throws IOException {
-    List<Source> retval = new LinkedList<>();
-    retval.add(
-        ObjectUtils.requireNonNull(
-            XmlUtil.getStreamSource(
-                OscalBindingContext.class.getResource("/schema/xml/oscal-component-definition_schema.xsd"))));
-    return CollectionUtil.unmodifiableList(retval);
-  }
-
-  @Override
-  protected JSONObject getOscalJsonSchema() {
-    return JsonSchemaContentValidator.toJsonObject(
-        ObjectUtils.requireNonNull(
-            OscalBindingContext.class.getResourceAsStream("/schema/json/oscal-component-definition_schema.json")));
-  }
 }
