@@ -8,7 +8,7 @@
 	</parent>
 	<groupId>gov.nist.secauto.oscal.tools.oscal-cli</groupId>
 	<artifactId>cli-core</artifactId>
-	<version>1.0.3</version>
+	<version>1.0.3-prototype-models-combined</version>
 
 	<packaging>jar</packaging>
 
@@ -453,6 +453,29 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-release-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<!-- Build a fat executable JAR -->
+				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+				  <archive>
+					<manifest>
+					  <mainClass>gov.nist.secauto.oscal.tools.cli.core.CLI</mainClass>
+					</manifest>
+				  </archive>
+				  <descriptorRefs>
+					<descriptorRef>jar-with-dependencies</descriptorRef>
+				  </descriptorRefs>
+				</configuration>
+				<executions>
+				  <execution>
+					<id>make-assembly</id>
+					<phase>package</phase>
+					<goals>
+					  <goal>single</goal>
+					</goals>
+				  </execution>
+				</executions>
+			  </plugin>
 		</plugins>
 	</build>
 </project>
